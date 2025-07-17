@@ -323,3 +323,19 @@ class AccountAPI(OkxClient):
     def spot_borrow_repay_history(self, ccy='', type='', after='', before='', limit=''):
         params = {'ccy': ccy, 'type': type, 'after': after, 'before': before, 'limit': limit}
         return self._request_with_params(GET, GET_BORROW_REPAY_HISTORY, params)
+
+    # FIXME：：注意：以下是自行添加的接口！！！
+    # 获取借币信息
+    def get_flexible_loan_info(self):
+        params = {}
+        return self._request_with_params(GET, FINANCE_LOAN_INFO, params)
+    
+    # 获取借币还币历史
+    def get_flexible_loan_history(self, ccy='', after='', before='', limit=''):
+        params = {'ccy': ccy, 'after': after, 'before': before, 'limit': limit}
+        return self._request_with_params(GET, FINANCE_LOAN_HISTORY, params)
+    
+    # 获取计息记录
+    def get_flexible_interest_accrued(self, ccy='', after='', before=''):
+        params = {'ccy': ccy, 'after': after, 'before': before}
+        return self._request_with_params(GET, FINANCE_INTEREST_ACCRUED, params)
